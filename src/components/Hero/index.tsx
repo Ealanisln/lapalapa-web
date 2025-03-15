@@ -1,5 +1,6 @@
 import React from 'react';
-import { Anchor, ChevronRight, MapPin } from 'lucide-react';
+import { Anchor, MapPin, PhoneCall, Utensils } from 'lucide-react';
+import Link from 'next/link';
 
 const HeroSection = () => {
   return (
@@ -26,21 +27,44 @@ const HeroSection = () => {
           {/* Contenido de Texto */}
           <div className="space-y-6 md:space-y-8">
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight">
-              <span className="block text-blue-400 text-3xl sm:text-5xl md:text-7xl mb-2">Lapalapa</span>
+              <span className="block text-blue-400 mb-2">Lapalapa</span>
               <span className="block">Mariscos Frescos</span>
             </h1>
             <p className="text-xl text-gray-300 max-w-lg">
-              Experimenta los mejores sabores del océano en cada platillo. Pescados y mariscos frescos todos los días, 
-              preparados con pasión y precisión.
+              Sumérgete en los auténticos sabores del mar en cada bocado. Pescados y mariscos frescos, preparados con pasión artesanal y el toque único de nuestra cocina.
             </p>
+            
+            {/* Servicio a Domicilio Destacado */}
+            <div className="bg-blue-500/20 border border-blue-400/30 rounded-lg p-4 flex items-center gap-3">
+              <div className="bg-blue-500 rounded-full p-2 flex-shrink-0">
+                <PhoneCall size={20} className="text-white" />
+              </div>
+              <div>
+                <p className="font-medium text-blue-300">¡NUEVO! Ahora con servicio a domicilio</p>
+                <a 
+                  href="tel:+523951027470" 
+                  className="text-white font-bold hover:text-blue-200 transition-colors"
+                >
+                  +52 (395) 102-7470
+                </a>
+              </div>
+            </div>
+            
             <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2 transition-colors">
-                Reservar Mesa
-                <ChevronRight size={20} />
-              </button>
-              <button className="border border-white hover:bg-white hover:text-slate-900 px-8 py-3 rounded-lg font-semibold transition-colors">
-                Ver Menú
-              </button>
+              <Link 
+                href="/menu-completo" 
+                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors"
+              >
+                Ver Menú Completo
+                <Utensils size={20} />
+              </Link>
+              <a 
+                href="tel:+523951027470" 
+                className="border border-white hover:bg-white hover:text-slate-900 px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+              >
+                <PhoneCall size={20} />
+                Ordenar a Domicilio
+              </a>
             </div>
             {/* Información de Ubicación */}
             <div className="flex items-center gap-2 text-gray-300">

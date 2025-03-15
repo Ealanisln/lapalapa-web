@@ -1,16 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Anchor, Phone, Mail, Clock, MapPin, Send } from "lucide-react";
-
-// Move the interface before using it in useState
-interface FormData {
-  nombre: string;
-  email: string;
-  telefono: string;
-  asunto: string;
-  mensaje: string;
-}
+import { Anchor, Phone, Mail, Clock, MapPin, ExternalLink, Instagram, Facebook } from "lucide-react";
+import Link from "next/link";
 
 const BackgroundPattern = () => {
   const [mounted, setMounted] = useState(false);
@@ -40,61 +32,57 @@ const BackgroundPattern = () => {
 };
 
 const Contacto = () => {
-  const [formData, setFormData] = useState<FormData>({
-    nombre: "",
-    email: "",
-    telefono: "",
-    asunto: "",
-    mensaje: "",
-  });
-  const [enviando, setEnviando] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-    e.preventDefault();
-    setEnviando(true);
-
-    // Aquí iría la lógica para enviar el formulario
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    setFormData({
-      nombre: "",
-      email: "",
-      telefono: "",
-      asunto: "",
-      mensaje: "",
-    });
-    setEnviando(false);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   const infoContacto = [
     {
-      icon: <Phone className="h-6 w-6" />,
+      icon: <Phone className="h-8 w-8" />,
       titulo: "Teléfono",
-      detalles: ["+52 (395) 785-1234", "+52 (395) 785-5678"],
+      detalles: ["+52 (395) 102-7470"],
+      accion: {
+        label: "Llamar ahora",
+        href: "tel:+523951027470",
+        icon: <ExternalLink size={16} className="ml-1" />
+      }
     },
     {
-      icon: <Mail className="h-6 w-6" />,
+      icon: <Mail className="h-8 w-8" />,
       titulo: "Correo",
-      detalles: ["reservaciones@lapalapa.com", "eventos@lapalapa.com"],
+      detalles: ["contacto@lapalapa.vip"],
+      accion: {
+        label: "Enviar correo",
+        href: "mailto:contacto@lapalapa.vip",
+        icon: <ExternalLink size={16} className="ml-1" />
+      }
     },
     {
-      icon: <Clock className="h-6 w-6" />,
+      icon: <Clock className="h-8 w-8" />,
       titulo: "Horario",
-      detalles: ["Lun - Jue: 12:00 - 22:00", "Vie - Dom: 12:00 - 23:00"],
+      detalles: ["Lun - Jue: 12:00 - 22:00", "Vie - Dom: 12:00 - 23:00"]
     },
     {
-      icon: <MapPin className="h-6 w-6" />,
+      icon: <MapPin className="h-8 w-8" />,
       titulo: "Ubicación",
-      detalles: ["Av. Benigno Romo #170", "Centro, San Juan de los Lagos"],
+      detalles: ["Av. Principal", "Centro, San Juan de los Lagos"],
+      accion: {
+        label: "Ver en mapa",
+        href: "https://maps.google.com/?q=San+Juan+de+los+Lagos+Lapalapa",
+        icon: <ExternalLink size={16} className="ml-1" />
+      }
     },
+  ];
+
+  const redesSociales = [
+    {
+      nombre: "Instagram",
+      icono: <Instagram className="h-6 w-6" />,
+      url: "https://instagram.com/lapalapa_oficial",
+      color: "hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"
+    },
+    {
+      nombre: "Facebook",
+      icono: <Facebook className="h-6 w-6" />,
+      url: "https://facebook.com/lapalapa",
+      color: "hover:bg-blue-600"
+    }
   ];
 
   return (
@@ -114,158 +102,71 @@ const Contacto = () => {
             </span>
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            ¿Tienes alguna pregunta o comentario? Nos encantaría escucharte.
-            Completa el formulario y nos pondremos en contacto contigo lo antes
-            posible.
+            ¿Tienes alguna pregunta o quieres hacer una reservación? 
+            Contáctanos directamente por teléfono o correo electrónico.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Información de Contacto */}
-          <div className="lg:col-span-1 space-y-8">
-            {infoContacto.map((info, index) => (
-              <div
-                key={index}
-                className="bg-slate-800/50 p-6 rounded-lg border border-blue-400/20"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="text-blue-400">{info.icon}</div>
-                  <div>
-                    <h3 className="font-semibold mb-2">{info.titulo}</h3>
-                    {info.detalles.map((detalle, i) => (
-                      <p key={i} className="text-gray-300 text-sm">
-                        {detalle}
-                      </p>
-                    ))}
-                  </div>
-                </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {/* Tarjetas de Información de Contacto */}
+          {infoContacto.map((info, index) => (
+            <div
+              key={index}
+              className="bg-slate-800/50 p-8 rounded-2xl border border-blue-400/20 hover:border-blue-400/50 transition-all duration-300 flex flex-col items-center text-center"
+            >
+              <div className="text-blue-400 bg-blue-400/10 p-4 rounded-full mb-4">
+                {info.icon}
               </div>
+              <h3 className="font-semibold text-xl mb-3 text-white">{info.titulo}</h3>
+              {info.detalles.map((detalle, i) => (
+                <p key={i} className="text-gray-300">
+                  {detalle}
+                </p>
+              ))}
+              {info.accion && (
+                <Link 
+                  href={info.accion.href}
+                  className="mt-4 inline-flex items-center text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                  target={info.accion.href.startsWith('http') ? "_blank" : undefined}
+                  rel={info.accion.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                >
+                  {info.accion.label}
+                  {info.accion.icon}
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Sección de Redes Sociales */}
+        <div className="bg-slate-800/50 rounded-2xl border border-blue-400/20 p-8 mb-12">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-blue-400 mb-2">Síguenos en redes sociales</h3>
+            <p className="text-gray-300">Mantente al día con nuestras promociones y eventos especiales</p>
+          </div>
+          
+          <div className="flex justify-center gap-4">
+            {redesSociales.map((red, index) => (
+              <a
+                key={index}
+                href={red.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-4 bg-slate-700 rounded-full ${red.color} text-white transition-all duration-300 hover:shadow-lg hover:scale-110`}
+                aria-label={`Visitar ${red.nombre}`}
+              >
+                {red.icono}
+              </a>
             ))}
           </div>
+        </div>
 
-          {/* Formulario */}
-          <div className="lg:col-span-2">
-            <form
-              onSubmit={handleSubmit}
-              className="bg-slate-800/50 p-8 rounded-lg border border-blue-400/20"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label
-                    htmlFor="nombre"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    Nombre completo
-                  </label>
-                  <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    value={formData.nombre}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 rounded-lg bg-slate-700/50 border border-blue-400/20 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-colors text-white placeholder-gray-400"
-                    placeholder="Tu nombre"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    Correo electrónico
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 rounded-lg bg-slate-700/50 border border-blue-400/20 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-colors text-white placeholder-gray-400"
-                    placeholder="tu@email.com"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label
-                    htmlFor="telefono"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    Teléfono
-                  </label>
-                  <input
-                    type="tel"
-                    id="telefono"
-                    name="telefono"
-                    value={formData.telefono}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg bg-slate-700/50 border border-blue-400/20 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-colors text-white placeholder-gray-400"
-                    placeholder="Tu teléfono"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label
-                    htmlFor="asunto"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    Asunto
-                  </label>
-                  <input
-                    type="text"
-                    id="asunto"
-                    name="asunto"
-                    value={formData.asunto}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 rounded-lg bg-slate-700/50 border border-blue-400/20 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-colors text-white placeholder-gray-400"
-                    placeholder="Asunto del mensaje"
-                  />
-                </div>
-
-                <div className="space-y-2 md:col-span-2">
-                  <label
-                    htmlFor="mensaje"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    Mensaje
-                  </label>
-                  <textarea
-                    id="mensaje"
-                    name="mensaje"
-                    value={formData.mensaje}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-2 rounded-lg bg-slate-700/50 border border-blue-400/20 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-colors text-white placeholder-gray-400"
-                    placeholder="Escribe tu mensaje aquí..."
-                  />
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <button
-                  type="submit"
-                  disabled={enviando}
-                  className="w-full bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {enviando ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      Enviar Mensaje
-                      <Send size={20} />
-                    </>
-                  )}
-                </button>
-              </div>
-            </form>
-          </div>
+        {/* Mensaje Final */}
+        <div className="text-center">
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            Agradecemos tu preferencia y esperamos poder atenderte pronto.
+            En Lapalapa nos esforzamos por brindarte la mejor experiencia.
+          </p>
         </div>
       </div>
 
