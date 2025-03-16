@@ -18,74 +18,84 @@ const geistMono = Geist_Mono({
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
-  "name": "Lapalapa",
-  "image": "https://lapalapa.vip/images/lapalapa-og.jpg",
-  "url": "https://lapalapa.vip",
-  "telephone": "+523951027470",
-  "address": {
+  name: "Lapalapa",
+  image: "https://lapalapa.vip/images/lapalapa-og.jpg",
+  url: "https://lapalapa.vip",
+  telephone: "+523951027470",
+  address: {
     "@type": "PostalAddress",
-    "streetAddress": "Av. Benigno Romo #170",
-    "addressLocality": "San Juan de los Lagos",
-    "addressRegion": "Jalisco",
-    "postalCode": "47000",
-    "addressCountry": "MX"
+    streetAddress: "Av. Benigno Romo #170",
+    addressLocality: "San Juan de los Lagos",
+    addressRegion: "Jalisco",
+    postalCode: "47000",
+    addressCountry: "MX",
   },
-  "geo": {
+  geo: {
     "@type": "GeoCoordinates",
-    "latitude": "21.238333", 
-    "longitude": "-102.335833" 
+    latitude: "21.238333",
+    longitude: "-102.335833",
   },
-  "openingHoursSpecification": [
+  openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-      "opens": "12:00",
-      "closes": "22:00"
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+      opens: "12:00",
+      closes: "22:00",
     },
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Friday", "Saturday", "Sunday"],
-      "opens": "12:00",
-      "closes": "23:00"
-    }
+      dayOfWeek: ["Friday", "Saturday", "Sunday"],
+      opens: "12:00",
+      closes: "23:00",
+    },
   ],
-  "menu": "https://lapalapa.vip/menu",
-  "servesCuisine": ["Mariscos", "Cocina Mexicana", "Pescados"],
-  "priceRange": "$$",
-  "paymentAccepted": "Efectivo, tarjetas de crédito",
-  "potentialAction": {
+  menu: "https://lapalapa.vip/menu",
+  servesCuisine: ["Mariscos", "Cocina Mexicana", "Pescados"],
+  priceRange: "$$",
+  paymentAccepted: "Efectivo, tarjetas de crédito",
+  potentialAction: {
     "@type": "OrderAction",
-    "target": {
+    target: {
       "@type": "EntryPoint",
-      "urlTemplate": "tel:+523951027470",
-      "inLanguage": "es-MX",
-      "actionPlatform": [
-        "http://schema.org/MobileWebPlatform"
-      ]
+      urlTemplate: "tel:+523951027470",
+      inLanguage: "es-MX",
+      actionPlatform: ["http://schema.org/MobileWebPlatform"],
     },
-    "deliveryMethod": [
-      "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"
-    ]
-  }
+    deliveryMethod: ["http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"],
+  },
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lapalapa.vip"),
   title: "Lapalapa | Restaurante de Mariscos Frescos en San Juan de los Lagos",
-  description: "Disfruta de los mejores mariscos frescos en San Juan de los Lagos. Servicio a domicilio, especialidades del mar y platillos preparados artesanalmente. ¡Ordena ya!",
-  keywords: ["restaurante", "mariscos", "seafood", "cocina marina", "pescados frescos", "lapalapa", "San Juan de los Lagos", "servicio a domicilio", "pulpo", "camarones"],
+  description:
+    "Disfruta de los mejores mariscos frescos en San Juan de los Lagos. Servicio a domicilio, especialidades del mar y platillos preparados artesanalmente. ¡Ordena ya!",
+  keywords: [
+    "restaurante",
+    "mariscos",
+    "seafood",
+    "cocina marina",
+    "pescados frescos",
+    "lapalapa",
+    "San Juan de los Lagos",
+    "servicio a domicilio",
+    "pulpo",
+    "camarones",
+  ],
   authors: [{ name: "Lapalapa Restaurant" }],
   creator: "Lapalapa",
   publisher: "Lapalapa",
   robots: "index, follow",
   manifest: "/manifest.json",
   icons: {
-    icon: "/favicon.ico"
+    icon: "/favicon.ico",
   },
   openGraph: {
     type: "website",
-    title: "Lapalapa | El mejor restaurante de mariscos en San Juan de los Lagos",
-    description: "Descubre los auténticos sabores del mar. Mariscos frescos preparados con pasión artesanal. ¡Ahora con servicio a domicilio!",
+    title:
+      "Lapalapa | El mejor restaurante de mariscos en San Juan de los Lagos",
+    description:
+      "Descubre los auténticos sabores del mar. Mariscos frescos preparados con pasión artesanal. ¡Ahora con servicio a domicilio!",
     url: "https://lapalapa.vip",
     siteName: "Lapalapa Mariscos",
     locale: "es_MX",
@@ -95,14 +105,15 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Lapalapa Mariscos Frescos",
-      }
-    ]
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lapalapa | Mariscos Frescos en San Juan de los Lagos",
-    description: "Disfruta de mariscos frescos con el sabor inigualable de Lapalapa. ¡Ahora con servicio a domicilio!",
-    images: ["/twitter-image.jpg"]
+    description:
+      "Disfruta de mariscos frescos con el sabor inigualable de Lapalapa. ¡Ahora con servicio a domicilio!",
+    images: ["/twitter-image.jpg"],
   },
   alternates: {
     canonical: "https://lapalapa.vip",
@@ -117,15 +128,15 @@ export const metadata: Metadata = {
     "geo.region": "MX-JAL",
     "geo.placename": "San Juan de los Lagos",
     "geo.position": "21.238333;-102.335833",
-    "ICBM": "21.238333, -102.335833",
-  }
+    ICBM: "21.238333, -102.335833",
+  },
 };
 
 // Viewport configuration
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1E293B"
+  themeColor: "#FFFFFF",
 };
 
 export default function RootLayout({

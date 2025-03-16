@@ -10,7 +10,7 @@ const metadata = {
     publisher: "Lapalapa Mariscos",
     category: "Restaurant",
     "format-detection": "telephone=yes,address=yes,email=yes",
-    "theme-color": "#1e40af", // Color azul que coincide con tu paleta
+    "theme-color": "#FFFFFF", // Color azul que coincide con tu paleta
     alternates: {
       canonical: "https://lapalapa.vip",
     },
