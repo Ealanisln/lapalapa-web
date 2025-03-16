@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     locale: "es_MX",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "/opengraph-image.jpg",
         width: 1200,
         height: 630,
         alt: "Lapalapa Mariscos Frescos",
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lapalapa | Mariscos Frescos en San Juan de los Lagos",
     description: "Disfruta de mariscos frescos con el sabor inigualable de Lapalapa. ¡Ahora con servicio a domicilio!",
-    images: ["/twitter-image.png"]
+    images: ["/twitter-image.jpg"]
   },
   alternates: {
     canonical: "https://lapalapa.vip",

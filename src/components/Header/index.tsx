@@ -1,30 +1,41 @@
+// src/components/Header/index.tsx
+
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, Anchor, ChevronDown, PhoneCall } from "lucide-react";
+import { Menu, X, ChevronDown, PhoneCall } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Logo from "../Logo"; // Importar el componente Logo
 
 const Navbar = () => {
+  // Cambié la inicialización de scrolled para garantizar que comience como false
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openSubmenus, setOpenSubmenus] = useState<Record<string, boolean>>({});
   const pathname = usePathname();
 
-  // Detectar scroll para cambiar el estilo de la navbar
+  // Mejoré la detección de scroll para garantizar que funcione
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+      // Compara directamente con el valor actual de window.scrollY
+      setScrolled(window.scrollY > 10);
+      
+      // Añadir log para depuración
+      console.log("Scroll position:", window.scrollY, "Scrolled state:", window.scrollY > 10);
     };
 
+    // Ejecuta handleScroll inmediatamente para establecer el estado inicial correcto
+    handleScroll();
+    
+    // Agrega el evento
     window.addEventListener("scroll", handleScroll);
+    
+    // Limpia el evento cuando el componente se desmonta
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [scrolled]);
+  }, []); // Quité scrolled de las dependencias para evitar llamadas innecesarias
 
   // Cerrar los submenús cuando se hace clic fuera de la navbar
   useEffect(() => {
@@ -74,18 +85,16 @@ const Navbar = () => {
     <nav
       id="main-navbar"
       className={`${
-        scrolled ? "bg-slate-900/95 shadow-lg py-2" : "bg-slate-900/80 py-4"
-      } text-white fixed w-full z-50 backdrop-blur-sm transition-all duration-300`}
+        scrolled ? "bg-white shadow-lg py-2" : "bg-white/95 py-4"
+      } text-gray-800 fixed w-full z-50 backdrop-blur-sm transition-all duration-300`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Logo and Name */}
-          <Link href="/" className="flex items-center group">
-            <Anchor className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
-            <span className="ml-2 text-xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
-              Lapalapa
-            </span>
-          </Link>
+          {/* Logo con el nuevo cambio de tamaño */}
+          <div className="py-1">
+            <div className="text-xs text-gray-400 hidden">Scrolled: {scrolled ? "true" : "false"}</div>
+            <Logo size={scrolled ? "small" : "large"} />
+          </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
@@ -94,8 +103,8 @@ const Navbar = () => {
                 <div key={item.name} className="relative group">
                   <button
                     className={`flex items-center space-x-1 ${
-                      isActive(item.href) ? "text-blue-400" : "text-gray-300"
-                    } hover:text-blue-400 transition-colors duration-200`}
+                      isActive(item.href) ? "text-amber-700" : "text-gray-700"
+                    } hover:text-amber-600 transition-colors duration-200`}
                     onClick={() => toggleSubmenu(item.name)}
                     onMouseEnter={() => toggleSubmenu(item.name, true)}
                   >
@@ -108,7 +117,7 @@ const Navbar = () => {
                     />
                   </button>
                   <div
-                    className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-slate-800 ring-1 ring-black ring-opacity-5 transition-all duration-200 ${
+                    className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-200 ${
                       openSubmenus[item.name]
                         ? "opacity-100 scale-100"
                         : "opacity-0 scale-95 pointer-events-none"
@@ -121,7 +130,7 @@ const Navbar = () => {
                         <Link
                           key={subItem.name}
                           href={subItem.href}
-                          className="block px-4 py-2 text-sm text-gray-300 hover:bg-slate-700 hover:text-white"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-700"
                         >
                           {subItem.name}
                         </Link>
@@ -134,17 +143,17 @@ const Navbar = () => {
                   key={item.name}
                   href={item.href}
                   className={`${
-                    isActive(item.href) ? "text-blue-400" : "text-gray-300"
-                  } hover:text-blue-400 transition-colors duration-200 relative group`}
+                    isActive(item.href) ? "text-amber-700" : "text-gray-700"
+                  } hover:text-amber-600 transition-colors duration-200 relative group`}
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-600 group-hover:w-full transition-all duration-300"></span>
                 </Link>
               )
             )}
             <a
               href="tel:+523951027470"
-              className="flex items-center gap-2 text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+              className="flex items-center gap-2 text-white bg-amber-700 hover:bg-amber-600 px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
             >
               <PhoneCall size={16} />
               Ordenar
@@ -155,7 +164,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white transition-colors duration-300"
+              className="text-gray-700 hover:text-amber-700 transition-colors duration-300"
               aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -176,8 +185,8 @@ const Navbar = () => {
                   <button
                     onClick={() => toggleSubmenu(item.name)}
                     className={`flex items-center justify-between w-full px-3 py-2 text-base font-medium ${
-                      isActive(item.href) ? "text-blue-400" : "text-gray-300"
-                    } hover:text-white hover:bg-slate-800 rounded-md`}
+                      isActive(item.href) ? "text-amber-700" : "text-gray-700"
+                    } hover:text-amber-700 hover:bg-amber-50 rounded-md`}
                   >
                     <span>{item.name}</span>
                     <ChevronDown
@@ -198,9 +207,9 @@ const Navbar = () => {
                         href={subItem.href}
                         className={`block px-3 py-1.5 text-sm font-medium ${
                           isActive(subItem.href)
-                            ? "text-blue-400"
-                            : "text-gray-400"
-                        } hover:text-white hover:bg-slate-800 rounded-md`}
+                            ? "text-amber-700"
+                            : "text-gray-600"
+                        } hover:text-amber-700 hover:bg-amber-50 rounded-md`}
                         onClick={() => setIsOpen(false)}
                       >
                         {subItem.name}
@@ -213,8 +222,8 @@ const Navbar = () => {
                   key={item.name}
                   href={item.href}
                   className={`block px-3 py-2 text-base font-medium ${
-                    isActive(item.href) ? "text-blue-400" : "text-gray-300"
-                  } hover:text-white hover:bg-slate-800 rounded-md`}
+                    isActive(item.href) ? "text-amber-700" : "text-gray-700"
+                  } hover:text-amber-700 hover:bg-amber-50 rounded-md`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
@@ -223,7 +232,7 @@ const Navbar = () => {
             )}
             <a
               href="tel:+523951027470"
-              className="flex items-center justify-center gap-2 w-full mt-4 bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-all duration-300 text-center hover:shadow-md"
+              className="flex items-center justify-center gap-2 w-full mt-4 bg-amber-700 hover:bg-amber-600 px-4 py-2 rounded-lg font-semibold transition-all duration-300 text-center hover:shadow-md text-white"
               onClick={() => setIsOpen(false)}
             >
               <PhoneCall size={18} />

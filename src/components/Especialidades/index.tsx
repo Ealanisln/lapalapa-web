@@ -1,4 +1,5 @@
-import React from 'react';
+// src/components/Especialidades/index.tsx
+
 import { Anchor, Award, Star, Flame } from 'lucide-react';
 
 const Especialidades = () => {
@@ -36,13 +37,13 @@ const Especialidades = () => {
   ];
 
   return (
-    <div id="especialidades" className="relative bg-slate-900 text-white py-20 overflow-hidden">
+    <div id="especialidades" className="relative bg-white text-gray-800 py-20 overflow-hidden">
       {/* Patrón de Fondo */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-10">
         {[...Array(15)].map((_, i) => (
           <Anchor
             key={i}
-            className="absolute text-blue-400"
+            className="absolute text-amber-700"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -57,11 +58,11 @@ const Especialidades = () => {
         {/* Encabezado */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-4">
-            <Award className="text-blue-400 h-12 w-12" />
+            <Award className="text-amber-700 h-12 w-12" />
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="block text-blue-400">Especialidades</span>
-            <span className="block text-2xl md:text-3xl text-gray-300 mt-2">
+            <span className="block text-amber-700">Especialidades</span>
+            <span className="block text-2xl md:text-3xl text-gray-600 mt-2">
               de la Casa
             </span>
           </h2>
@@ -72,7 +73,7 @@ const Especialidades = () => {
           {especialidades.map((plato, index) => (
             <div 
               key={index}
-              className="relative bg-gradient-to-br from-slate-800/90 to-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20 hover:border-blue-400/40 transition-all group"
+              className="relative bg-amber-50 rounded-xl p-8 border border-amber-200 hover:border-amber-300 transition-all group shadow-md hover:shadow-lg"
             >
               {/* Icono Flotante */}
               <div className="absolute -top-4 -right-4 text-4xl transform rotate-12 group-hover:rotate-0 transition-transform">
@@ -82,21 +83,21 @@ const Especialidades = () => {
               {/* Contenido */}
               <div className="space-y-4">
                 <div className="flex items-start justify-between">
-                  <h3 className="text-2xl font-bold text-blue-400">
+                  <h3 className="text-2xl font-bold text-amber-800">
                     {plato.nombre}
                   </h3>
-                  <span className="text-xl font-semibold">{plato.precio}</span>
+                  <span className="text-xl font-semibold text-amber-700">{plato.precio}</span>
                 </div>
                 
-                <p className="text-gray-300">{plato.descripcion}</p>
+                <p className="text-gray-600">{plato.descripcion}</p>
                 
-                <div className="flex items-center gap-4 text-sm text-gray-400">
+                <div className="flex items-center gap-4 text-sm text-gray-500">
                   <div className="flex items-center gap-1">
-                    <Star size={16} className="text-blue-400" />
+                    <Star size={16} className="text-amber-600" />
                     <span>Recomendado para {plato.porciones}</span>
                   </div>
                   {plato.popular && (
-                    <div className="flex items-center gap-1 text-orange-400">
+                    <div className="flex items-center gap-1 text-amber-600">
                       <Flame size={16} />
                       <span>Más Popular</span>
                     </div>
@@ -109,7 +110,7 @@ const Especialidades = () => {
 
         {/* Nota al pie */}
         <div className="mt-16 text-center">
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-500 max-w-2xl mx-auto">
             Todas nuestras especialidades son preparadas al momento y pueden requerir un tiempo adicional de preparación. 
             Pregunta a tu mesero por el tiempo estimado.
           </p>
@@ -120,7 +121,7 @@ const Especialidades = () => {
       <div className="absolute bottom-0 left-0 right-0">
         <svg 
           viewBox="0 0 1440 200" 
-          className="w-full h-auto fill-blue-400/20"
+          className="w-full h-auto fill-amber-100"
           preserveAspectRatio="none"
         >
           <path d="M0,32L48,37.3C96,43,192,53,288,80C384,107,480,149,576,154.7C672,160,768,128,864,112C960,96,1056,96,1152,90.7C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
