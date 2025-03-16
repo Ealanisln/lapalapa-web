@@ -1,9 +1,9 @@
 import { ImageResponse } from 'next/og'
  
-// Tamaño de la imagen
+// Tamaño de la imagen (Twitter recomienda 1:1 o 2:1)
 export const size = {
   width: 1200,
-  height: 630,
+  height: 600,
 }
 
 // Tipo de contenido
@@ -12,7 +12,7 @@ export const contentType = 'image/png'
 // Texto alternativo para la imagen
 export const alt = 'Lapalapa Mariscos Frescos en San Juan de los Lagos'
 
-// Función para generar la imagen de OpenGraph
+// Función para generar la imagen de Twitter
 export default async function Image() {
   return new ImageResponse(
     (
@@ -35,7 +35,7 @@ export default async function Image() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: 72,
+            fontSize: 64,
             fontWeight: 'bold',
             marginBottom: 24,
           }}
@@ -48,24 +48,12 @@ export default async function Image() {
             alignItems: 'center',
             justifyContent: 'center',
             textAlign: 'center',
-            fontSize: 36,
+            fontSize: 32,
             opacity: 0.9,
             marginTop: 12,
           }}
         >
-          Restaurante de Mariscos Frescos
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 28,
-            opacity: 0.8,
-            marginTop: 32,
-          }}
-        >
-          San Juan de los Lagos, Jalisco
+          Mariscos Frescos • Cocina del Mar
         </div>
       </div>
     ),

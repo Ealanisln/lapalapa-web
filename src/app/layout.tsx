@@ -70,6 +70,7 @@ const jsonLd = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://lapalapa.vip"),
   title: "Lapalapa | Restaurante de Mariscos Frescos en San Juan de los Lagos",
   description: "Disfruta de los mejores mariscos frescos en San Juan de los Lagos. Servicio a domicilio, especialidades del mar y platillos preparados artesanalmente. ¡Ordena ya!",
   keywords: ["restaurante", "mariscos", "seafood", "cocina marina", "pescados frescos", "lapalapa", "San Juan de los Lagos", "servicio a domicilio", "pulpo", "camarones"],
@@ -90,7 +91,7 @@ export const metadata: Metadata = {
     locale: "es_MX",
     images: [
       {
-        url: "/opengraph-image.jpg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Lapalapa Mariscos Frescos",
@@ -101,7 +102,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lapalapa | Mariscos Frescos en San Juan de los Lagos",
     description: "Disfruta de mariscos frescos con el sabor inigualable de Lapalapa. ¡Ahora con servicio a domicilio!",
-    images: ["/twitter-image.jpg"]
+    images: ["/twitter-image.png"]
   },
   alternates: {
     canonical: "https://lapalapa.vip",
