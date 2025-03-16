@@ -1,5 +1,3 @@
-// src/components/Contacto/index.tsx
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -11,21 +9,25 @@ const BackgroundPattern = () => {
   
   useEffect(() => {
     setMounted(true);
+    return () => setMounted(false);
   }, []);
 
   if (!mounted) return null;
 
+  // Create positions array instead of directly rendering in the map
+  const positions = Array.from({ length: 15 }).map((_, i) => ({
+    left: `${i * 7}%`,
+    top: `${(i * 13) % 100}%`,
+    transform: `rotate(${i * 24}deg)`,
+  }));
+
   return (
     <div className="absolute inset-0 opacity-10 pointer-events-none">
-      {Array.from({ length: 15 }).map((_, i) => (
+      {positions.map((style, i) => (
         <Anchor
           key={i}
           className="absolute text-amber-700"
-          style={{
-            left: `${i * 7}%`,
-            top: `${(i * 13) % 100}%`,
-            transform: `rotate(${i * 24}deg)`,
-          }}
+          style={style}
           size={24}
         />
       ))}
@@ -34,6 +36,13 @@ const BackgroundPattern = () => {
 };
 
 const Contacto = () => {
+  // Define state to ensure component is mounted
+  const [isClient, setIsClient] = useState(false);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const infoContacto = [
     {
       icon: <Phone className="h-8 w-8" />,
@@ -90,9 +99,9 @@ const Contacto = () => {
   return (
     <div
       id="contacto"
-      className="relative bg-white text-gray-800 py-20"
+      className="relative bg-white text-gray-800 py-32"
     >
-      <BackgroundPattern />
+      {isClient && <BackgroundPattern />}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Encabezado */}
