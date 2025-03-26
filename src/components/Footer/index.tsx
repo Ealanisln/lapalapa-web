@@ -1,8 +1,8 @@
 "use client";
 
-import React from 'react';
-import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react';
-import Logo from '../Logo'; // Importar el nuevo componente Logo
+import React from "react";
+import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from "lucide-react";
+import Logo from "../Logo"; // Importar el nuevo componente Logo
 
 const Footer = () => {
   return (
@@ -12,27 +12,30 @@ const Footer = () => {
           {/* Columna de Logo y Descripción */}
           <div className="flex flex-col items-start">
             <Logo size="large" />
-            
+
             <p className="mt-4 text-gray-600 text-sm leading-relaxed">
-              Experiencia culinaria única con los mejores mariscos frescos, 
+              Experiencia culinaria única con los mejores mariscos frescos,
               preparados con pasión y tradición.
             </p>
           </div>
 
           {/* Columna de Contacto */}
           <div>
-            <h3 className="text-lg font-semibold text-amber-700 mb-4">Contacto</h3>
+            <h3 className="text-lg font-semibold text-amber-700 mb-4">
+              Contacto
+            </h3>
             <ul className="space-y-3">
               <li className="flex items-center gap-3">
                 <MapPin size={18} className="text-amber-600" />
                 <span className="text-gray-600 text-sm">
-                  Av. Benigno Romo #170, Centro, San Juan de los Lagos
+                  Prolongación Pedro Galeana #2. Col. El Pedregoso. San Juan de
+                  los Lagos, Jalisco.
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-amber-600" />
-                <a 
-                  href="tel:+523951027470" 
+                <a
+                  href="tel:+523951027470"
                   className="text-gray-600 hover:text-amber-700 transition-colors text-sm"
                 >
                   +52 (395) 102-7470
@@ -40,8 +43,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-amber-600" />
-                <a 
-                  href="mailto:info@lapalapa.vip" 
+                <a
+                  href="mailto:info@lapalapa.vip"
                   className="text-gray-600 hover:text-amber-700 transition-colors text-sm"
                 >
                   info@lapalapa.vip
@@ -49,42 +52,48 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
           {/* Columna de Horario */}
           <div>
-            <h3 className="text-lg font-semibold text-amber-700 mb-4">Horario</h3>
+            <h3 className="text-lg font-semibold text-amber-700 mb-4">
+              Horario
+            </h3>
             <ul className="space-y-3">
               <li className="flex items-center gap-3">
                 <Clock size={18} className="text-amber-600" />
-                <span className="text-gray-600 text-sm">Lun - Jue: 12:00 - 22:00</span>
+                <span className="text-gray-600 text-sm">
+                  Lunes, Martes, Jueves, Viernes, Sábado y Domingo: 12:00 -
+                  19:00
+                </span>
               </li>
               <li className="flex items-center gap-3">
-                <Clock size={18} className="text-amber-600" />
-                <span className="text-gray-600 text-sm">Vie - Sáb: 12:00 - 23:00</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Clock size={18} className="text-amber-600" />
-                <span className="text-gray-600 text-sm">Domingo: 12:00 - 20:00</span>
+                <Clock
+                  size={18}
+                  className="text-amber-600 line-through opacity-50"
+                />
+                <span className="text-gray-400 text-sm">
+                  Miércoles: Cerrado
+                </span>
               </li>
             </ul>
           </div>
-
           {/* Columna de Síguenos */}
           <div>
-            <h3 className="text-lg font-semibold text-amber-700 mb-4">Síguenos</h3>
+            <h3 className="text-lg font-semibold text-amber-700 mb-4">
+              Síguenos
+            </h3>
             <div className="flex space-x-3">
-              <a 
-                href="https://www.instagram.com/lapalapa.slj/" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/lapalapa.slj/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white p-3 rounded-full border border-amber-200 text-amber-700 hover:text-white hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 transition-colors duration-300"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
               </a>
-              <a 
-                href="https://facebook.com/lapalapa" 
-                target="_blank" 
+              <a
+                href="https://facebook.com/lapalapa"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white p-3 rounded-full border border-amber-200 text-amber-700 hover:text-white hover:bg-blue-600 transition-colors duration-300"
                 aria-label="Facebook"
@@ -99,11 +108,20 @@ const Footer = () => {
         <div className="border-t border-amber-200 mt-10 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Lapalapa. Todos los derechos reservados.
+              © {new Date().getFullYear()} Lapalapa. Todos los derechos
+              reservados.
             </p>
             <div className="mt-4 md:mt-0">
               <p className="text-gray-500 text-sm">
-                Designed by <a href="https://alanis.dev" className="text-amber-600 hover:text-amber-700 transition-colors" target="_blank" rel="noopener noreferrer">alanis web dev</a>
+                Designed by{" "}
+                <a
+                  href="https://alanis.dev"
+                  className="text-amber-600 hover:text-amber-700 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  alanis web dev
+                </a>
               </p>
             </div>
           </div>

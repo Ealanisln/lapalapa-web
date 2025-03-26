@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuCompleto from '@/components/MenuCompleto';
+import MenuCompleto from '@/components/MenuCompleto/MenuCompleto';
 
 export const metadata = {
   title: 'Especialidades de Mariscos | Lapalapa',

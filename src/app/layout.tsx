@@ -24,7 +24,7 @@ const jsonLd = {
   telephone: "+523951027470",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Av. Benigno Romo #170",
+    streetAddress: "Prolongación Pedro Galeana #2. Col. El Pedregoso. San Juan de los Lagos, Jalisco.",
     addressLocality: "San Juan de los Lagos",
     addressRegion: "Jalisco",
     postalCode: "47000",

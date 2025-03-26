@@ -3,8 +3,26 @@
 import React from "react";
 import { Anchor, MapPin, PhoneCall, Utensils } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
-const HeroSection = () => {
+// Define the images for the carousel
+const carouselImages = [
+  "/images/carousel/lapalapa_1.jpg",
+  "/images/carousel/lapalapa_2.jpg",
+  "/images/carousel/lapalapa_3.jpg",
+  "/images/carousel/lapalapa_4.jpg",
+  "/images/carousel/lapalapa_5.jpg",
+  "/images/carousel/lapalapa_6.jpg",
+];
+
+const HeroSection: React.FC = () => {
   return (
     <div className="relative bg-white text-gray-800 overflow-hidden">
       {/* Patrón de Fondo */}
@@ -76,21 +94,40 @@ const HeroSection = () => {
             <div className="flex items-center gap-2 text-gray-600">
               <MapPin size={20} className="text-amber-700" />
               <p className="text-sm sm:text-base">
-                Av. Benigno Romo #170, Centro, San Juan de los Lagos, Jalisco
+               Prolongación Pedro Galeana #2. Col. El Pedregoso. San Juan de los Lagos, Jalisco.
               </p>
             </div>
           </div>
 
-          {/* Imagen/Elemento Decorativo */}
+          {/* Carousel de Imágenes */}
           <div className="relative w-full max-w-lg mx-auto md:max-w-none">
-            <div className="aspect-square rounded-full bg-amber-100 animate-pulse"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <img
-                src="/images/hero/main.png"
-                alt="Platillo de mariscos frescos"
-                className="w-4/5 h-4/5 object-cover rounded-3xl transform rotate-6 shadow-xl"
-              />
-            </div>
+            <Carousel
+              opts={{
+                loop: true,
+                align: "center",
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {carouselImages.map((image, index) => (
+                  <CarouselItem key={index} className="relative">
+                    <div className="aspect-square relative overflow-hidden rounded-3xl shadow-xl">
+                      <div className="absolute inset-0 bg-amber-100 opacity-20"></div>
+                      <Image
+                        src={image}
+                        alt={`Lapalapa mariscos imagen ${index + 1}`}
+                        fill
+                        className="object-cover transform hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority={index === 0}
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden sm:flex border-amber-700 text-amber-700 hover:bg-amber-50 hover:text-amber-900" />
+              <CarouselNext className="hidden sm:flex border-amber-700 text-amber-700 hover:bg-amber-50 hover:text-amber-900" />
+            </Carousel>
           </div>
         </div>
       </div>

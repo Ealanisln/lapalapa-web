@@ -67,12 +67,15 @@ const Contacto = () => {
     {
       icon: <Clock className="h-8 w-8" />,
       titulo: "Horario",
-      detalles: ["Lun - Jue: 12:00 - 22:00", "Vie - Dom: 12:00 - 23:00"]
+      detalles: [
+        "Lun, Mar, Jue, Vie, Sáb, Dom: 12:00 - 19:00",
+        "Miércoles: Cerrado"
+      ]
     },
     {
       icon: <MapPin className="h-8 w-8" />,
       titulo: "Ubicación",
-      detalles: ["Av. Benigno Romo #170", "Centro, San Juan de los Lagos"],
+      detalles: ["Prolongación Pedro Galeana #2. Col. El Pedregoso.", "Centro, San Juan de los Lagos"],
       accion: {
         label: "Ver en mapa",
         href: "https://maps.google.com/?q=San+Juan+de+los+Lagos+Lapalapa",

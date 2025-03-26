@@ -16,7 +16,7 @@ export default function Home() {
           itemScope
           itemType="https://schema.org/PostalAddress"
         >
-          <span itemProp="streetAddress">Av. Benigno Romo #170</span>
+          <span itemProp="streetAddress">Prolongación Pedro Galeana #2. Col. El Pedregoso.</span>
           <span itemProp="addressLocality">San Juan de los Lagos</span>
           <span itemProp="addressRegion">Jalisco</span>
           <span itemProp="postalCode">47000</span>
